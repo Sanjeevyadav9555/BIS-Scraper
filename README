@@ -1,0 +1,101 @@
+# BIS Scraper
+
+A Python tool that collects manufacturer and vendor leads (name, phone, website, address) from Google Maps using the Outscraper API, so they can be checked for BIS licence status and contacted for BIS certification services.
+
+## Features
+
+- Search multiple keywords and cities in one run (e.g. "electric steam cooker manufacturer Delhi")
+- Extracts company name, phone, website and address
+- Removes duplicate entries automatically
+- Saves results to an Excel file (`vendors.xlsx`)
+
+## Requirements
+
+- Python 3.8 or higher
+- An [Outscraper](https://outscraper.com) account and API key
+
+## Installation
+
+1. Clone or download this repository.
+
+2. Create and activate a virtual environment:
+
+   Windows:
+   ```
+   python -m venv venv
+   venv\Scripts\activate
+   ```
+   Mac / Linux:
+   ```
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+3. Install dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
+   (or `pip install outscraper pandas openpyxl`)
+
+## Set your API key
+
+Do not write the key inside the code. Set it as an environment variable.
+
+Windows (Command Prompt):
+```
+set OUTSCRAPER_API_KEY=your_api_key_here
+```
+Mac / Linux:
+```
+export OUTSCRAPER_API_KEY=your_api_key_here
+```
+
+## Usage
+
+1. Open `leads.py` and edit the `queries` list with your own product keywords and cities.
+2. Run the script:
+   ```
+   python leads.py
+   ```
+3. Open `vendors.xlsx` to see the results.
+
+Tip: test with `limit=10` first to save API credits.
+
+## Output
+
+| Column  | Description              |
+|---------|--------------------------|
+| Name    | Company name             |
+| Phone   | Contact number           |
+| Website | Company website          |
+| Address | Full address             |
+
+## Checking BIS licence status
+
+After collecting leads, verify each company manually or with your own process on:
+
+- BIS Care app
+- [manakonline.in](https://manakonline.in)
+
+Companies with no licence found can be added to your outreach list.
+
+## Project structure
+
+```
+bis-scraper/
+├── leads.py           # main script
+├── requirements.txt   # dependencies
+├── .gitignore         # ignores venv, data files, keys
+└── README.md          # this file
+```
+
+## Notes and disclaimer
+
+- Results may include traders and shops, not only manufacturers. Filter them before calling.
+- Phone numbers and details can be outdated. Verify before outreach.
+- Use this tool responsibly. Follow each website's terms of service and India's DPDP Act, and respect opt-out requests.
+- This project is for lead generation only. It is not affiliated with the Bureau of Indian Standards.
+
+## License
+
+Add a licence of your choice (for example MIT) if you want others to reuse the code.
